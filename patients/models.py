@@ -7,8 +7,8 @@ class Patient(models.Model):
     patient_last_name = models.CharField(max_length=150, blank=True)
     patient_first_name = models.CharField(max_length=150, blank=True)
     patient_middle_name = models.CharField(max_length=150, blank=True)
-    age = models.IntegerField(blank=True)
-    dob = models.DateTimeField(blank=True)
+    age = models.IntegerField(blank=True, null=True)
+    dob = models.DateField(blank=True, null=True)
     gender = models.CharField(max_length=5,blank=True)
     unique_characteristics = models.CharField(max_length=1000,blank=True)
     next_of_kin_name = models.CharField(max_length=250,blank=True)
@@ -30,13 +30,13 @@ class Patient(models.Model):
 
 
 class PatientTriage(models.Model):
-    org = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     triage_tag_num = models.CharField(max_length=50, blank=True)
     tag_color_condition = models.CharField(max_length=25, blank=True)
     mode_of_arrival = models.CharField(max_length=25, blank=True)
-    arrival_date = models.DateTimeField(blank=True)
+    arrival_date = models.DateTimeField(blank=True, null=True)
     arrival_condition = models.CharField(max_length=50, blank=True)
     room_number = models.CharField(max_length=25, blank=True)
     created_date = models.DateTimeField(default=timezone.now)
@@ -47,7 +47,7 @@ class PatientTriage(models.Model):
         self.save()
 
     def __str__(self):
-        return (str(self.tracking_id) + ' ' + str(self.patient_id))
+        return (self.triage_tag_num)
 
 
 class Injury(models.Model):
@@ -60,7 +60,7 @@ class Injury(models.Model):
         self.save()
 
     def __str__(self):
-        return (str(self.tracking_detail_id) + ' ' + self.injury_type)
+        return (self.injury_type)
 
 
 class Disposition(models.Model):
@@ -82,5 +82,5 @@ class Disposition(models.Model):
         self.save()
 
     def __str__(self):
-        return (str(self.tracking_detail_id) + ' ' + self.disposition_type)
+        return (self.disposition_type)
 
