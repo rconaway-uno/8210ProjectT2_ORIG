@@ -1,0 +1,21 @@
+{% extends 'events/nurse_base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+    {% if user.is_authenticated %}
+        <div class="page-container">
+
+            <h2 class="top-menu">Welcome {{ user.username }},</h2>
+            <p>Please choose from below options.</p>
+        </div>
+    {% endif %}
+
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-3">
+                <p><a class="btn btn-primary" href="" role="button">Manage Patients </a></p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
