@@ -39,7 +39,9 @@ def nurse_home(request):
     return render(request, 'beds/nurse_home.html',
                   {'nurse': nurse_home})
 
-
+def bed_availability(request):
+	beds = Bed.objects.order_by('organization_id')
+	return render(request, 'beds/bed_availability.html', {'beds': beds})
 
 
 

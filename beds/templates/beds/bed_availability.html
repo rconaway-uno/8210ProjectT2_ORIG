@@ -1,0 +1,35 @@
+﻿{% load static %}
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'css/bed_availability.css' %}">
+    <title>Douglas County Emergency Services</title>
+</head>
+<body>
+    <div class="row">
+        <h2 align="center">Hospital Bed Information</h2>
+    </div>
+    <div>
+        <table class="blueTable">
+            <thead>
+                <tr>
+                    <th>Hospital Name</th>
+                    <th>Bed Type</th>
+                    <th># of Beds</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bed in beds %}
+                <tr>
+                    <td>{{ bed.organization }}</td>
+                    <td>{{ bed.bed_type }}</td>
+                    <td>{{ bed.num_available }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

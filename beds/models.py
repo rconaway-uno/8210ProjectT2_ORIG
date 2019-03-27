@@ -6,7 +6,7 @@ from events.models import Event, Organization
 
 
 class Bed(models.Model):
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    event_id = models.ForeignKey(Event, on_delete=models.CASCADE)
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
     bed_type = models.CharField(max_length=50, blank=True)
     initial_num = models.IntegerField(blank=True, null=True)
