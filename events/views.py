@@ -1,3 +1,38 @@
+from .models import *
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+from django.utils import timezone
+from django.contrib.auth.decorators import permission_required
+from django.shortcuts import render, get_object_or_404
+from django.db.models import Count
 
-# Create your views here.
+def home(request):
+    return render(request, 'events/home.html',
+                  {'events': home})
+
+def adminlogin(request):
+
+    if request.user.is_staff:
+        return redirect('events/nurse_home.html')
+    else:
+        return redirect('events/admin_home.html')
+
+@permission_required('is_superuser')
+def admin_home(request):
+    return render(request, 'events/admin_home.html',
+                  {'admin': admin_home})
+
+@permission_required('is_staff')
+def admin_home(request):
+
+    return render(request, 'events/admin_home.html',
+                  {'chs': admin_home})
+
+def admin_login(request):
+        return render(request, 'events/admin_login.html', {'events': admin_login})
+
+@login_required
+def nurse_home(request):
+    return render(request, 'events/nurse_home.html',
+                  {'nurse': nurse_home})

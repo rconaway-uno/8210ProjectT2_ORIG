@@ -5,8 +5,8 @@ from events.models import Organization, Event
 
 # Register your models here.
 class BedList(admin.ModelAdmin):
-    list_display=('event_id', 'org_id', 'org_name', 'bed_type', 'initial_num_available')
-    list_filter=('event_id', 'bed_type')
-    ordering=['org_name']
+    list_display=('event', 'organization', 'bed_type', 'initial_num', 'num_used', 'num_available')
+    list_filter=('event', 'organization', 'bed_type')
+    ordering=['bed_type', 'num_available', 'organization' ]
 
 admin.site.register(Bed)
