@@ -1,4 +1,4 @@
-{% extends 'beds/admin_base.html' %}
+{% extends 'events/admin_base.html' %}
 {% load staticfiles %}
 {% block content %}
 
@@ -13,11 +13,10 @@
     <div class="content container">
         <div class="row">
             <div class="col-md-3">
-                <p><a class="btn btn-primary" href="{% url 'beds:user_option' %}" role="button">Manage Users </a></p>
+                <p><a class="btn btn-primary" href="{% url 'events:user_option' %}" role="button">Manage Users </a></p>
                 <br>
-                <p><a class="btn btn-primary" href="{% url 'beds:event_list' %}" role="button">Manage Events </a></p>
-            </br>
-                <p><a class="btn btn-primary" href="" role="button">Manage Organizations </a></p>
+                <p><a class="btn btn-primary" href="{% url 'events:event_list' %}" role="button">Manage Events </a></p>
+
             </div>
             </div>
         </div>
