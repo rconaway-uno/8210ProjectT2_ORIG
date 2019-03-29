@@ -1,4 +1,4 @@
-
+from .models import *
 from .forms import *
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
@@ -6,9 +6,8 @@ from django.shortcuts import redirect
 from django.utils import timezone
 from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render, get_object_or_404
+from django.db.models import Count
 
-
-# Create your views here.
 def home(request):
     return render(request, 'events/home.html',
                   {'events': home})
@@ -38,9 +37,6 @@ def admin_login(request):
 def nurse_home(request):
     return render(request, 'events/nurse_home.html',
                   {'nurse': nurse_home})
-
-
-
 
 @login_required
 def users_list(request):

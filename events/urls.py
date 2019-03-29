@@ -1,4 +1,3 @@
-
 from . import views
 from django.conf.urls import url, include
 from django.contrib import admin
@@ -15,7 +14,6 @@ urlpatterns = [
 
     url(r'^admin_login/', views.admin_home, name='adminlogin'),
     url(r'^nurse_login/', views.nurse_home, name='nurselogin'),
-
     path('admin_home', views.admin_home, name='admin_home'),
     path('nurse_home', views.nurse_home, name='nurse_home'),
 #change password urls
@@ -25,7 +23,6 @@ urlpatterns = [
     path('password_reset/done/',auth_views.PasswordResetDoneView.as_view(),	name='password_reset_done'),
     path('reset/<uidb64>/<token>/',	auth_views.PasswordResetConfirmView.as_view(),name='password_reset_confirm'),
     path('reset/done/',	auth_views.PasswordResetCompleteView.as_view(),	name='password_reset_complete'),
-
     path('admin/user_option', views.user_option, name='user_option'),
     path('admin/nurse_list', views.nurse_list, name='nurse_list'),
     path('admin/users_list', views.users_list, name='users_list'),
@@ -39,5 +36,3 @@ urlpatterns = [
     path('event/create/', views.event_new, name='event_new'),
     path('event/<int:pk>/delete/', views.event_delete, name='event_delete'),
 ]
-
-

@@ -12,8 +12,10 @@
 
     <div class="content container">
         <div class="row">
-            <div class="col-md-3">
-                <p><a class="btn btn-primary" href="" role="button">Manage Patients </a></p>
+            <div class="row">
+                <a href="{% url 'patients:patient_new' %}" class="row">
+                    <span class="btn btn-primary">Add Patient</span>
+                </a>
             </div>
         </div>
     </div>
