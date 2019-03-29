@@ -13,9 +13,12 @@
     <div class="content container">
         <div class="row">
             <div class="col-md-3">
-                <p><a class="btn btn-primary" href="" role="button">Manage Users </a></p>
+                <p><a class="btn btn-primary" href="{% url 'beds:user_option' %}" role="button">Manage Users </a></p>
                 <br>
-                <p><a class="btn btn-primary" href="" role="button">View Events </a></p>
+                <p><a class="btn btn-primary" href="{% url 'beds:event_list' %}" role="button">Manage Events </a></p>
+            </br>
+                <p><a class="btn btn-primary" href="" role="button">Manage Organizations </a></p>
+            </div>
             </div>
         </div>
     </div>

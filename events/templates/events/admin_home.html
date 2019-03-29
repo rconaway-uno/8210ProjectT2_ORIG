@@ -1,39 +1,25 @@
-{% extends "events/base.html" %}
+{% extends 'events/admin_base.html' %}
 {% load staticfiles %}
 {% block content %}
 
     {% if user.is_authenticated %}
-<div class="page-container">
-    <h2 class="top-menu">Welcome {{ user.first_name }} {{ user.last_name }},</h2>
-    <p>Welcome to the Administrators Console</p>
-</div>
+        <div class="page-container">
+
+            <h2 class="top-menu">Welcome {{ user.username }},</h2>
+            <p>Please choose from below options.</p>
+        </div>
     {% endif %}
 
-<div class="content container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <p><a class="btn btn-primary" href="" role="button">Manage Users </a></p>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-3">
+                <p><a class="btn btn-primary" href="{% url 'events:user_option' %}" role="button">Manage Users </a></p>
+                <br>
+                <p><a class="btn btn-primary" href="{% url 'events:event_list' %}" role="button">Manage Events </a></p>
+
             </div>
-        </div>
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <p><a class="btn btn-primary" href="" role="button">View Events </a></p>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <a href="{% url 'patients:patient_list' %}" class="row">
-                    <span class="btn btn-primary">View Patients</span>
-                </a>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <p><a class="btn btn-primary" href="" role="button">View Beds </a></p>
             </div>
         </div>
     </div>
-</div>
 
 {% endblock %}

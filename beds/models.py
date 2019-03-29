@@ -6,12 +6,11 @@ from events.models import Event, Organization
 
 
 class Bed(models.Model):
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
-    organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
-    bed_type = models.CharField(max_length=50, blank=True)
-    initial_num = models.IntegerField(blank=True, null=True)
-    num_used = models.IntegerField(blank=True, null=True)
-    num_available = models.IntegerField(blank=True, null=True)
+    event_id = models.ForeignKey(Event, on_delete=models.CASCADE)
+    org_id = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    bed_type = models.CharField(max_length=50)
+    initial_num_available = models.IntegerField
+    num_used = models.IntegerField
     created_date = models.DateTimeField(default=timezone.now)
     updated_date = models.DateTimeField(auto_now_add=True)
 
@@ -24,5 +23,6 @@ class Bed(models.Model):
         self.save()
 
     def __str__(self):
-        return str(self.organization)
+        return str(self.Organization)
+
 
